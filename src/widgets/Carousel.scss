@@ -1,0 +1,225 @@
+$slide-count: 5;
+$slide-width: 20rem;
+
+html {
+  box-sizing: border-box;
+  @media (max-width: 425px) {
+    font-size: 8px;
+  }
+}
+
+body {
+  font-size: 1rem;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  line-height: 1.375;
+  letter-spacing: 0em;
+  --tw-text-opacity: 1;
+  color: rgb(38 50 56 / var(--tw-text-opacity));
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: inherit;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.carousel__wrap {
+    margin-top: 0;
+    align-items: center;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    position: relative;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.carousel__inner {
+    height: 30rem;
+    position: relative;
+    width: calc(#{$slide-width * 3});
+}
+
+.carousel__container {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.carousel__slide-list {
+    height: 100%;
+    left: 50%;
+    list-style-type: none;
+    margin: 0;
+    margin-bottom: 0px;
+    padding: 0;
+    position: absolute;
+    transform: translateX(-50%);
+    width: calc(#{($slide-count + 0.5) * $slide-width * 2});
+}
+
+.carousel__slide-item {
+    display: inline-block;
+    height: $slide-width;
+    margin: 0;
+    padding: 1rem;
+    position: absolute;
+    transition: all 0.3s;
+    width: $slide-width;
+}
+
+.carousel__slide-item-img-link {
+    cursor: zoom-in;
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    img {
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.5s ease;
+        width: 100%;
+    }
+
+    &::after {
+        align-items: center;
+        background: rgba(black, 0.5);
+        color: white;
+        // content: 'read more';
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        opacity: 0;
+        position: absolute;
+        transition: all 0.5s ease;
+        width: 100%;
+    }
+
+    &:hover {
+        &::after {
+            opacity: 1;
+        }
+
+        img {
+            transform: scale(1.3);
+        }
+    }
+}
+
+.carousel-slide-item__body {
+    bottom: -1.2rem;
+    height: 10%;
+    position: absolute;
+
+    h4 {
+        margin: 0.1rem 0 0;
+        text-transform: uppercase;
+    }
+
+    p {
+        -webkit-font-smoothing: antialiased;
+        --tw-text-opacity: 5;
+        color: rgb(96 125 139 / var(--tw-text-opacity));
+        line-height: 1.625;
+        font-weight: 400;
+        font-size: 1rem;
+        font-family: Roboto, sans-serif;
+        display: block;
+        margin: 0;
+        // font-size: 1.2rem;
+        // line-height: 1.3;
+        // margin: 0.7rem 0 0;
+    }
+}
+
+.carousel__btn {
+    align-items: center;
+    background: 0;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+
+    &--prev {
+        left: -3rem;
+    }
+
+    &--next {
+        right: -3rem;
+    }
+}
+
+.carousel__btn-arrow {
+    border: solid black;
+    border-width: 0 0.2rem 0.2rem 0;
+    height: 1rem;
+    padding: 1px;
+    width: 1rem;
+    padding-left: 0;
+    z-index: 5;
+
+    &--left {
+        transform: rotate(135deg);
+    }
+
+    &--right {
+        transform: rotate(-45deg);
+    }
+}
+
+.carousel__dots {
+    display: inline-block;
+    left: 44%;
+    margin-top: 0;
+    position: absolute;
+    transform: translateX(-50%);
+    transform: translateY(-550%);
+
+    .dot {
+        background: #ccc;
+        border: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        height: 1.2rem;
+        margin: 0 0.3rem;
+        margin-top: 0;
+        outline: none;
+        transform: scale(0.5);
+        width: 1.2rem;
+
+        &.active {
+            background: rgb(250, 71, 71);
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel__dots {
+        display: inline-block;
+        left: 40%;
+        margin-top: 0;
+        position: absolute;
+        transform: translateX(-50%);
+        transform: translateY(-550%);
+    }
+}
